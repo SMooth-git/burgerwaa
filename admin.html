@@ -602,7 +602,7 @@ function viewOrder(id){
   var o=orders.find(function(x){return x.id===id;}); if(!o)return;
   var d=o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleString('en-IN'):'—';
   var items=(o.items||[]).map(function(i){
-    return '<div class="oi-row"><span>'+i.name+(i.size?' ('+i.size+')')+'  × '+i.qty+'</span><span>₹'+(i.price*i.qty).toLocaleString('en-IN')+'</span></div>';
+    var lbl=i.name+(i.size?'  ('+i.size+')':''); return '<div class="oi-row"><span>'+lbl+' × '+i.qty+'</span><span>₹'+(i.price*i.qty).toLocaleString('en-IN')+'</span></div>';
   }).join('');
   document.getElementById('moOrderBody').innerHTML=
     '<div class="od-grid">'+
